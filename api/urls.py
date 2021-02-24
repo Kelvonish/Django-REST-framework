@@ -3,6 +3,7 @@ from api import views
 from . import views
 from rest_framework.routers import DefaultRouter
 
+
 router = DefaultRouter()
 router.register("customerApi", views.customerApi)
 router.register("orderApi", views.ordersApi)
