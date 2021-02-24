@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'pj3%bi7fx1u)&-xob!skryk&+#7c8i42hrt4e^9j*t%z7bq!6k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'social_django',
     'rest_framework_social_oauth2',
     'corsheaders',
-    'rest_framework_swagger',
    
 ]
 
