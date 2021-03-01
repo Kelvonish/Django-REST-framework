@@ -9,6 +9,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 import africastalking
 import requests
+from rest_framework.authtoken.models import Token
 
 # Create your views here.
 
@@ -64,7 +65,7 @@ def deleteuser(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ordersApi(viewsets.ModelViewSet):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     queryset=Order.objects.all()
     serializer_class = orderSerializer 
@@ -117,7 +118,7 @@ class ordersApi(viewsets.ModelViewSet):
 
 
 class customerApi(viewsets.ModelViewSet):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     queryset=Customer.objects.all()
     serializer_class = customerSerializer
@@ -136,7 +137,17 @@ def listOrders(request):
 
 
 def sendSms(request):
-    return render(request,'test.html') 
+    if request.user.id == None:
+        print('none')
+    else:
+
+        print(request.user)
+        obj = Token.objects.get(user = request.user)
+        if obj==None:
+            create = Token.objects.create(user=request.user)
+            obj = Token.objects.get(user = request.user)
+        print(obj)
+    return render(request,'test.html',{'obj':obj}) 
 
     
     
