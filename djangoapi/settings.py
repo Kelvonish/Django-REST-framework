@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'social_django',
     'corsheaders',
-    'rest_framework_swagger',
    
 ]
 
