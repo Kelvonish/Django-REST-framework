@@ -85,7 +85,7 @@ class ordersApi(viewsets.ModelViewSet):
             if serializedData.save():
                 usernameApi = "djangoapi"
                 password = "djangoapi"
-                res = requests.get(request.data['customer'],auth=(usernameApi,password))
+                res = requests.get(request.data['customer'], headers={'Authorization': '7d68311ed0f5a61abac5f01b507ba87501c00af9'})
                 print(res)
                 resJson = res.json()
                 phoneInt = resJson['phone']
