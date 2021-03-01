@@ -140,14 +140,16 @@ def sendSms(request):
     if request.user.id == None:
         print('none')
     else:
-
         print(request.user)
         obj = Token.objects.get(user = request.user)
         if obj==None:
-            create = Token.objects.create(user=request.user)
+            token = Token.objects.create(user=request.user)
+            print(token.key)
             obj = Token.objects.get(user = request.user)
-        print(obj)
-    return render(request,'test.html',{'obj':obj}) 
+    context={
+        "userActive":obj
+    }
+    return render(request,'test.html',context) 
 
     
     
