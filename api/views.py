@@ -10,6 +10,9 @@ from rest_framework.permissions import IsAuthenticated
 import africastalking
 import requests
 from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 # Create your views here.
 
@@ -136,22 +139,29 @@ def listOrders(request):
     return Response(serializedData.data,status=status.HTTP_200_OK)
 
 
-def sendSms(request):
+def Login(request):
+    token=""
     if request.user.id == None:
         print('none')
     else:
-        print(request.user)
-        obj = Token.objects.get(user = request.user)
-        if obj==None:
-            token = Token.objects.create(user=request.user)
+        userActive = User.objects.get(username=request.user)   
+        token,created= Token.objects.get_or_create(user=userActive)
+        print(token)
+        print(created)
+        '''if token==None:
+            token = Token.objects.create(user=userActive)
             print(token.key)
-            obj = Token.objects.get(user = request.user)
+            #obj = Token.objects.get(user = request.user)'''
     context={
-        "userActive":obj
+        "userActive":token
     }
     return render(request,'test.html',context) 
 
     
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+    # Redirect to a success page.
     
 
 

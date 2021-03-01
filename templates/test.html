@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Authenticate to use api</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,22 +19,106 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Hello, world!</h1>
+  
+  
+    {% if user.is_authenticated %}
+  <div class="row">
+  <div class="col mx-auto">
 
-    {{user}}
-    {{userActive.key}}
-    <div class="row">
-  <div class="col-md-3">
-    <a class="btn btn-outline-dark" href="{% url "social:begin" "google-oauth2" %}" role="button" style="text-transform:none">
-      <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-      Login with Google
-    </a>
+ <p><h3>Welcome {{user}} </h3><br></p>
+<h4>Token: {{userActive.key}}</h4>
+<br>
+<small>Please copy the token. It is required to make the API calls </small><br>
+you can use django rest framework browsable API interface to make the calls. <a href="{% url 'api-root'%}" class="btn btn-outline-secondary">Take me there </a><br>
+<br>
+<a href="{% url 'logout'%}" class="btn btn-danger">Logout</a><br>
+
+</div> 
+</div>
+{%else%}
+
+<div class=' row g-sign-in-button d-flex justify-content-center'>
+  <div class=content-wrapper>
+    <a href="{% url "social:begin" "google-oauth2" %}">
+      <div class='logo-wrapper'>
+          <img src='https://developers.google.com/identity/images/g-logo.png'>
+      </div>
+      <span class='text-container'>
+    <span>Sign in with Google</span>
+  </span>
+</a>
   </div>
 </div>
 
+{%endif%}
+
+<style>
+      *, *:before, *:after {
+          box-sizing: border-box;
+      }
+
+      .g-sign-in-button {
+          margin: 10px;
+          display: inline-block;
+          width: 240px;
+          height: 50px;
+          background-color: #4285f4;
+          color: #fff;
+          border-radius: 1px;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+          transition: background-color .218s, border-color .218s, box-shadow .218s;
+      }
+
+      .g-sign-in-button:hover {
+          cursor: pointer;
+          -webkit-box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
+          box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
+      }
+
+      .g-sign-in-button:active {
+          background-color: #3367D6;
+          transition: background-color 0.2s;
+      }
+
+      .g-sign-in-button .content-wrapper {
+          height: 100%;
+          width: 100%;
+          border: 1px solid transparent;
+      }
+
+      .g-sign-in-button img {
+          width: 18px;
+          height: 18px;
+      }
+
+      .g-sign-in-button .logo-wrapper {
+          padding: 15px;
+          background: #fff;
+          width: 48px;
+          height: 100%;
+          border-radius: 1px;
+          display: inline-block;
+      }
+
+      .g-sign-in-button .text-container {
+          font-family: Roboto,arial,sans-serif;
+          font-weight: 500;
+          letter-spacing: .21px;
+          font-size: 16px;
+          line-height: 48px;
+          color: #fff;
+          vertical-align: top;
+          border: none;
+          display: inline-block;
+          text-align: center;
+          width: 180px;
+      }
+
+</style>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>

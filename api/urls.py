@@ -10,8 +10,9 @@ router.register("orderApi", views.ordersApi)
 
 
 urlpatterns = [
-    path('',include(router.urls)),
+    path('browsableApi/',include(router.urls),name="browsableApi"),
     path('auth/', include('rest_framework_social_oauth2.urls')),
-    path('sms',views.sendSms),
+    path('',views.Login,name="login"),
+    path('logout',views.logout_view,name="logout"),
     path('api-auth/', include('rest_framework.urls')),
 ]
