@@ -1,6 +1,8 @@
 # Django-REST-framework
 It contains API endpoint to create, retrieve, update and delete customers with their respective orders.
 
+#For an extensive online documentation visit https://documenter.getpostman.com/view/5714554/TWDfCswS
+
 DjangoCustomerOrderApi
 CustomerApi
 This deals with the customer model in the database. It is used to create, delete, update and retrievecustomer details
