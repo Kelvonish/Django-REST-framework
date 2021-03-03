@@ -21,13 +21,19 @@ Authorization
 ```
 ```
 Example Request List Customers
+
 import requests
 url = "https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/"
-payload headers == {{}
+
+payload = {}
+headers = {
+  'Authorization': ''
+}
+
+response = requests.request("GET", url, headers=headers, data = payload)
+
+print(response.text.encode('utf8'))
 ```
-(^) } 'Authorization': ''
-(^) response=requests.request("GET",url,headers=headers **View More** ,data=payload)
-Documentation Settings
 
 
 ### POST Create Customer
@@ -56,8 +62,19 @@ Please use 254712345678 format
 Example Request Create Customer
 import requests
 url = "https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/"
-payload 'email':= ''{'name', : '',
-'phone'files =: ['' }
+payload = {'name': '',
+'email': '',
+'phone': ''}
+files = [
+
+]
+headers = {
+  'Authorization': ''
+}
+
+response = requests.request("POST", url, headers=headers, data = payload, files = files)
+
+print(response.text.encode('utf8'))
 ```
 (^) ]
 
