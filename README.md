@@ -76,17 +76,14 @@ response = requests.request("POST", url, headers=headers, data = payload, files 
 
 print(response.text.encode('utf8'))
 ```
-(^) ]
 
 ### PUT Update Customer
 
 ```
 https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/{{customer_id}}/
-```
-#### View More
 
 ```
-Documentation Settings
+
 ```
 
 ##### HEADERS
@@ -107,11 +104,22 @@ phone of the customer. It should follow 254712345678
 ```
 Example Request Update Customer
 import requests
-url = "https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/{{customer_id}}/"
-payload = {'name': '','email': '',
-'phone': ''}files = [
+url = "https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/2/"
+payload = {'name': '',
+'email': '',
+'phone': ''}
+files = [
+
+]
+headers = {
+  'Authorization': ''
+}
+
+response = requests.request("PUT", url, headers=headers, data = payload, files = files)
+
+print(response.text.encode('utf8'))
 ```
-(^) ]
+
 
 ### DEL Delete Customer
 
@@ -127,10 +135,7 @@ PARAMS
 ```
 Authorization
 ```
-#### View More
 
-```
-Documentation Settings
 ```
 
 ```
@@ -141,11 +146,20 @@ This is the id of the customer to be deleted in the database
 ```
 Example Request Delete Customer
 import requests
-url = "https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/{{customer_id}}/"
-payload = {'customer_id': ''}files = [
+url = "https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/2/"
+
+files = [
+
+]
+headers = {
+  'Authorization': ''
+}
+
+response = requests.request("DELETE", url, headers=headers, data = payload, files = files)
+
+print(response.text.encode('utf8'))
 ```
-]headers = { (^)
-(^) 'Authorization':''
+
 
 ### GET Single Customer details
 
@@ -166,20 +180,25 @@ customer_id This the the id of the customer in the database
 ```
 ```
 Example Request Single Customer details
+
+url = "https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/1/"
+
+payload = {}
+files = [
+
+]
+headers = {
+  'Authorization': ''
+}
+
+response = requests.request("GET", url, headers=headers, data = payload, files = files)
+
+print(response.text.encode('utf8'))
 ```
-#### View More
+
 
 ```
-Documentation Settings
-```
 
-```
-import requests
-url = "https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/{{customer_id}}/"
-payload = {'customer_id': ''}files = [
-```
-]headers = { (^)
-(^) 'Authorization':''
 
 ## OrderApi
 
@@ -198,18 +217,17 @@ Authorization
 Example Request List Orders
 import requests
 url = "https://django-rest-customer-api.herokuapp.com/browsableApi/orderApi/"
-payload = {}headers = {
-'Authorization': ''}
-```
-(^) response= requests.request("GET",url,headers=headers,data= payload)
+payload = {}
+headers = {
+  'Authorization': ''
+}
 
-#### View More
+response = requests.request("GET", url, headers=headers, data = payload)
 
-#### View More
+print(response.text.encode('utf8'))
+```
 
-```
-Documentation Settings
-```
+
 
 ### POST Create Order
 
