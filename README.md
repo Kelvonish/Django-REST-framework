@@ -85,8 +85,7 @@ https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/{{custom
 ```
 
 ```
-
-##### HEADERS
+HEADERS
 
 ```
 BODY formdata
