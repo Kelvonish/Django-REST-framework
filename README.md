@@ -88,11 +88,15 @@ https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/{{custom
 HEADERS
 
 ```
+
+```
 BODY formdata
 ```
+
 ```
 Authorization
 ```
+
 ```
 name
 name of the customer
@@ -100,6 +104,7 @@ email email of the customer
 phone
 phone of the customer. It should follow 254712345678
 ```
+
 ```
 Example Request Update Customer
 import requests
@@ -135,7 +140,7 @@ PARAMS
 Authorization
 ```
 
-```
+
 
 ```
 BODY formdata
@@ -143,6 +148,7 @@ customer_id
 This is the id of the customer to be deleted in the database
 ```
 ```
+
 Example Request Delete Customer
 import requests
 url = "https://django-rest-customer-api.herokuapp.com/browsableApi/customerApi/2/"
@@ -205,6 +211,7 @@ print(response.text.encode('utf8'))
 
 ### GET List Orders
 
+```
 ```
 https://django-rest-customer-api.herokuapp.com/browsableApi/orderApi/
 ```
