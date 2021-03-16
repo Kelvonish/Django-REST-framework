@@ -1,5 +1,5 @@
 # Django-REST-framework
-It contains API endpoint to create, retrieve, update and delete customers with their respective orders.
+It contains API endpoint to create, retrieve, update and delete customers with their respective orders..
 
 #For an extensive online documentation visit https://documenter.getpostman.com/view/5714554/TWDfCswS
 link to the api service to generate your access token https://django-rest-customer-api.herokuapp.com/
